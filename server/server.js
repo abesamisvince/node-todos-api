@@ -90,6 +90,18 @@ app.patch('/todos/:id', (req, res) => {
      
 });
 
+app.post('/users', (req, res) => {
+    var body = _.pick(req.body, ['email', 'password']);
+
+    if(_.isBoolean(body.email.unique) && !body.email.unique){
+        
+    }else{
+        body.completed = false;
+        body.completedAt = null;
+    }
+
+});
+
 app.listen(3000, ()=>{
     console.log('Started on port 3000');
 });
